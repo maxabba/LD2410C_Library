@@ -186,7 +186,7 @@ bool LD2410C::setSerialBaudRate(uint32_t baudRate) {
         default: return false;  // Unsupported baud rate
     }
     
-    uint8_t data[] = {baudRateIndex & 0xFF, (baudRateIndex >> 8) & 0xFF};
+    uint8_t data[] = {static_cast<uint8_t>(baudRateIndex & 0xFF), static_cast<uint8_t>((baudRateIndex >> 8) & 0xFF)};
     return sendCommand(0x00A1, data, sizeof(data));
 }
 
