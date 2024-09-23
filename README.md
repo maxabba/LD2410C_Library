@@ -166,35 +166,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 markdown
 Copia codice
 
-### **Explanation of the README.md:**
-
-1. **Title and Overview:** 
-   - Clearly explains what the library is, its purpose, and the features it provides.
-   
-2. **Features:** 
-   - Highlights key features of the library, such as presence detection, adaptive filtering, and serial communication.
-
-3. **Installation Instructions:** 
-   - Provides multiple ways to install the library, including PlatformIO (recommended), GitHub, and manual installation for Arduino IDE.
-
-4. **Basic Usage Example:** 
-   - A simple example that demonstrates initializing the sensor, registering callbacks, and reading sensor data.
-
-5. **API Reference:** 
-   - Explains key functions provided by the library for initialization, configuration, data retrieval, and adaptive filtering.
-
-6. **Development and Contribution:** 
-   - Provides instructions on how to contribute to the library, clone the repository, and submit changes.
-
-7. **License:** 
-   - Specifies that the project is licensed under the MIT License.
-
-### **Next Steps:**
-
-1. **Add this `README.md` to your project root.**
-2. **Push the changes to GitHub** by following the Git instructions from earlier:
-   ```bash
-   git add README.md
-   git commit -m "Add README"
-   git push
-Ensure that all example code and instructions are tested and working correctly before publishing the library.
