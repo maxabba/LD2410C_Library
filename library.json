@@ -1,0 +1,24 @@
+{
+    "name": "LD2410C",
+    "version": "1.0.0",
+    "description": "Arduino library for the LD2410C radar sensor with adaptive filtering",
+    "keywords": "radar, sensor, human presence, adaptive filter",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/maxabba/LD2410C_Library.git"
+    },
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": [
+        "espressif32",
+        "arduino"
+    ],
+    "examples": "examples/*"
+}
