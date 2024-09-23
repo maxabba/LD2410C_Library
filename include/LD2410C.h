@@ -1,10 +1,11 @@
 #ifndef LD2410C_H
 #define LD2410C_H
 
-#include <Arduino.h>  // Add this to include HardwareSerial and millis()
+#include <Arduino.h>
 #include <cstdint>
 #include <functional>
 #include "LD2410C_AdaptiveFilter.h"
+#include <string.h>
 
 class LD2410C {
 public:
@@ -25,6 +26,8 @@ public:
     bool setUnoccupiedDuration(uint16_t seconds);
     bool enableEngineeringMode();
     bool disableEngineeringMode();
+    
+    // New configuration functions
     bool setSerialBaudRate(uint32_t baudRate);
     bool restoreFactorySettings();
     bool restartModule();
@@ -40,6 +43,9 @@ public:
     float getStationaryTargetDistance() const;
     uint8_t getMovingTargetEnergy() const;
     uint8_t getStationaryTargetEnergy() const;
+    bool getFirmwareVersion(uint16_t& major, uint16_t& minor);
+
+    // New data retrieval functions
     uint8_t getTargetState() const;
     float getDetectionDistance() const;
     uint8_t getMovementEnergyGate(uint8_t gate) const;
@@ -63,7 +69,7 @@ private:
     HardwareSerial& _serial;
     bool _configurationMode;
     bool _engineeringMode;
-
+    
     // Sensor data
     bool _presenceDetected;
     float _movingTargetDistance;
@@ -77,6 +83,15 @@ private:
     uint8_t _filteredMovingTargetEnergy;
     uint8_t _filteredStationaryTargetEnergy;
 
+    // New private members for storing additional sensor data
+    uint8_t _targetState;
+    float _detectionDistance;
+    uint8_t _movementEnergyGates[9];
+    uint8_t _stationaryEnergyGates[9];
+    uint8_t _maxMovementGate;
+    uint8_t _maxStationaryGate;
+    uint16_t _unoccupiedDuration;
+
     // Callbacks
     std::function<void(bool)> _presenceCallback;
     std::function<void(float, float)> _distanceCallback;
@@ -84,7 +99,7 @@ private:
     // Adaptive filter
     AdaptiveFilter _filter;
 
-    // Helper functions
+    // Private helper functions
     bool sendCommand(uint16_t command, const uint8_t* data = nullptr, uint8_t dataLength = 0);
     bool readResponse(uint8_t* response, uint16_t& responseLength, uint32_t timeout = 1000);
     void parseFrame(const uint8_t* frame, uint16_t length);
